@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+body,html {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+#mynav{
+   background-color:  #181642 !important;
+   color: rgb(209, 59, 26);
+  box-shadow: rgba(241, 243, 245, 0.2) 0px 1px 10px;
+  font-weight: 200;
+  font-size: 1.2rem;
+}
+.nav-link {
+    font-size: 0.85em;
+}
+.dropdown-item {
+    font-size: 0.85em;
+    font-weight: 300;
+}
+/* .sentence {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 1.2rem;
+    max-width: 0;
+    animation: typing 3s steps(20, end) forwards infinite;
+    cursor: pointer;
+    z-index: -1;
+  }
+  @keyframes typing {
+    from {
+        max-width: 0ch;
+    }
+    to {
+        max-width: 37ch;
+    }
+  } */
+.lpage {
+background-color: #181642;
+min-height: 100vh;
+color:white;
+}
+.main
+{
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+}
+.left {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-content: center;
+gap:10px;
+}
+.lbtn {
+font-weight: 200;
+background-color: #FF2C90;
+color: #FFFFFF;
+}
+.lbtn:hover
+{
+  background-color: #da096a;
+  color: #FFFFFF;
+}
+.main-heading {
+    color:#FF2C90;
+}
+.modal-footer i{
+  margin:0 4px;
+  font-size:22px;
+}
+.modal-footer i:hover{
+  cursor: pointer;
+}
+.heading{
+  background-color:#012740;
+}
+.card-header {
+  gap:5px;
+}
+.bg-theme{
+  background-color: #0e0d23;
+  color:white;
+}
+.skills{
+  margin:2px;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap:3px;
+}
+.banner {
+  width: auto;
+  height:40vh;
+}
+.form-box {
+  box-shadow:  0px 2px 8px 0px rgba(99, 99, 99, 0.2);
+  border-top: 5px solid #181642;
+  border-left: 3px solid #181642;
+  border-radius: 10px;
+}

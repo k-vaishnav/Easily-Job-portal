@@ -1,0 +1,199 @@
+<div class="container">
+  <% if(locals.lastVisit) { %>
+  <div class="alert alert-info" role="alert">
+    Your last Visit was on : <%= locals.lastVisit %>
+  </div>
+  <% } %> <% if(errorMessage) { %>
+  <div class="alert alert-danger" role="alert"><%= errorMessage %></div>
+  <% } %>
+  <div class="card mb-3">
+    <img
+      src="https://img.freepik.com/premium-vector/job-vacancy-design-banner-with-people-illustration_76831-205.jpg?semt=ais_hybrid"
+      class="card-img-top banner"
+      alt="We are Hiring."
+    />
+    <div class="card-body">
+      <h1 class="lead text-center text-success fs-1">
+        <span class="text-danger"><%= job.jobdesignation %></span>
+        <span>Oppurtunity in </span>
+        <span class="text-uppercase"><%= job.joblocation %> ON-SITE at</span>
+        <span class="text-info"><%= job.companyname %></span>
+      </h1>
+      <% if(user) { %>
+      <div class="actions d-flex align-items-start justify-content-start">
+        <span
+          style="width: 200px"
+          class="heading text-white border-opacity-50 p-1 border border-success-subtle rounded-1"
+        >
+          Actively Hiring
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-graph-up-arrow text-success mx-2"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"
+            />
+          </svg>
+        </span>
+        <div class="action-right mx-2 px-2 mt-1">
+          <a
+            href="/job/update/<%= job.id %>"
+            onclick="updateJob(event,'<%= job.id %>')"
+            class="mx-2"
+            ><i class="fa-solid fa-file-pen"></i>
+          </a>
+          <a
+            class="text-danger"
+            href="/job/delete/<%= job.id %>"
+            onclick="deleteJob(event,'<%= job.id %>')"
+          >
+            <i class="fa-solid fa-trash"></i>
+          </a>
+        </div>
+      </div>
+      <% } %>
+
+      <div
+        class="container d-flex flex-column align-items-start justify-content-start my-3 fw-4"
+      >
+        <h1 class="lead"><%= job.companyname %></h1>
+        <div>
+          <span class="lead"><%= job.jobdesignation %></span>
+          <span class="lead"><%= job.jobcategory %></span>
+        </div>
+        <div
+          class="d-flex flex-column align-items-start justify-content-start p-2 mt-2"
+        >
+          <span class="lead">
+            <i class="fa-duotone fa-solid fa-map-pin"></i>
+            <span class="my-2 fw-light"><%= job.joblocation %> On-Site</span>
+          </span>
+          <span class="lead">
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+            <span class="my-2 fw-light"><%= job.salary %> On-Site</span>
+          </span>
+          <span class="lead">
+            <i class="fa-solid fa-hourglass-half"></i>
+            <span class="my-2 fw-light">Apply By <%= job.applyby %></span>
+          </span>
+          <span class="lead">
+            <i class="fa-solid fa-chart-simple"></i>
+            <span class="my-2 fw-light"
+              >Number of openings <%= job.numberofopenings %></span
+            >
+          </span>
+          <a
+            style="text-decoration: none; cursor: pointer"
+            href="/job/applicants/<%= job.id %>"
+          >
+            <span class="lead">
+              <i class="fa-solid fa-user-group"></i>
+              <span class="my-2 fw-light text-danger">
+                Applicants <%= job.applicants.length %></span
+              >
+            </span>
+          </a>
+        </div>
+        <div class="container">
+          <div class="skills p-1">
+            <% job.skillsRequired.forEach(skill => { %>
+            <button class="btn btn-sm btn-outline-info"><%= skill %></button>
+            <% }) %>
+          </div>
+          <button
+            data-bs-toggle="modal"
+            data-bs-target="#applyModal"
+            class="btn btn-md btn-primary px-5 my-2"
+          >
+            Apply Now
+          </button>
+        </div>
+      </div>
+      <span
+        class="bg-success text-white border border-success-subtle rounded p-2"
+      >
+        Posted: <%= job.jobposted %>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+
+<div class="modal" tabindex="-1" id="applyModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-success fw-light fs-4 lead">easily!</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container form-border p-2 mx-auto w-75 my-3 rounded">
+          <h4 class="text-center mb-3">apply in less than 1 minute</h4>
+          <form
+            action="/job/applicants/<%= job.id %>"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="name">name</span>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="enter your name"
+                name="name"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="email">email</span>
+              <input
+                type="email"
+                class="form-control"
+                placeholder="enter your email"
+                name="email"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="contact">contact</span>
+              <input
+                type="tel"
+                class="form-control"
+                placeholder="+91_ _ _ _ _ _ _ _ _ _ "
+                name="contact"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="resumePath">resume</span>
+              <input
+                type="file"
+                class="form-control"
+                placeholder="choose file"
+                name="resumePath"
+                accept="resumes/*"
+              />
+            </div>
+            <button type="submit" class="btn btn-md btn-success w-100">
+              submit
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

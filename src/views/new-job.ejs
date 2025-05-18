@@ -1,0 +1,92 @@
+<div class="container p-3 form-box w-50 mx-auto rounded my-5">
+    <h2 class="lead fw-light">Post a new Job</h2>
+    <form action="/jobs" method="post">
+      <div class="input-group mb-3">
+        <select class="form-select" name="jobcategory" required>
+          <option selected disabled value="Tech">Select new job category</option>
+          <option value="Tech">Tech</option>
+          <option value="Non-tech">Non tech</option>
+        </select>
+      </div>
+      <div class="input-group mb-3">
+        <select class="form-select" name="jobdesignation" required>
+          <option selected disabled value="job designaton">
+            Select new job designation
+          </option>
+          <option value="HR">HR</option>
+          <option value="SDE">SDE</option>
+          <option value="DevOps">DevOps</option>
+          <option value="Mern Developer">Mern Developer</option>
+          <option value="Mean Developer">Mean Developer</option>
+          <option value="Java Developer">Java Developer</option>
+          <option value="Front-End Developer">Front-End Developer</option>
+          <option value="Back-End Developer">Back-End Developer</option>
+          <option value="Full-Stack Developer">Full-Stack Developer</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="joblocation" class="form-label">Enter job location</label>
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control"
+            name="joblocation"
+            required
+          />
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="companyname">Company Name</span>
+        <input
+          type="text"
+          class="form-control"
+          name="companyname"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          name="salary"
+          placeholder="salary"
+        />
+        <span class="input-group-text">Total Positions</span>
+        <input
+          type="text"
+          class="form-control"
+          name="numberofopenings"
+          placeholder="total no of openings"
+        />
+      </div>
+      <div class="input-group mb-3">
+          <select
+          required
+          multiple
+          name="skillsRequired"
+          class="form-select"
+          aria-label="Default select example"
+      >
+          <option selected disabled>select skills required for this job</option>
+          <option selected value="React">React</option>
+          <option selected value="NodeJs">NodeJs</option>
+          <option selected value="Angular">Angular</option>
+          <option selected value="MongoDB">MongoDB</option>
+          <option value="SQL">SQL</option>
+          <option value="Express">Express</option>
+          <option value="Java">Java</option>
+          <option value="SpringBoot">SpringBoot</option>
+          <option value="C++">C++</option>
+          <option value="Data Structures & Algo">Data Structures & Algo</option>
+      </select>
+        <span class="input-group-text">Apply By</span>
+        <input
+          type="date"
+          class="form-control"
+          name="applyBy"
+          >
+      </div>
+  
+      <button type="submit" class="mb-3 mt-2 btn btn-md btn-success w-100">Submit</button>
+    </form>
+  </div>
+  
